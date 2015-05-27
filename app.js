@@ -12,28 +12,11 @@ mongoose.connect('mongodb://localhost/candusenhub');
 var db = mongoose.connection;
 var Work = require('./models/work');
 
-//console.dir(db)
 db.on('error', console.error.bind(console, 'connection error:'));
-mongoose.connection.on('open', function (ref) {
-    console.log('Connected to mongo server.');
 
-
-    //trying to get collection names
-    mongoose.connection.db.listCollections().toArray(function(err, names) {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        names.forEach(function(e,i,a) {
-            console.log("--->>", e);
-        });
-    }
-    new Work({Work: "what is good"+Math.random(), num: Math.random()}).save();
-    Work.find(function(error,thing){
-      console.log(thing[thing.length-1])
-    })
+Work.find(function(error,thing){
+  console.log(thing[thing.length-1])
 });
-})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

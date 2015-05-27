@@ -2,7 +2,13 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    script(data-main='js/main' src='js/lib/require.js') 
+    script(type='text/javascript' src='js/secondary.js')
+    script(type='text/javascript' src='js/lib/angular.js')
+    script(type='text/javascript' src='js/init.js')
+
+
   body
     div(id='container')
     block content
