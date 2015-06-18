@@ -30,6 +30,7 @@ define(function(){
 			for(var i = 0;i<10;i++){
 				path.segments.splice(num(path.segments.length),3)
 			}
+			path.simplify()
       path.strokeColor = {
   		gradient:{
   			stops:[prettyRaCo(),prettyRaCo(),prettyRaCo()],

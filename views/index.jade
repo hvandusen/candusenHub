@@ -4,13 +4,8 @@ block content
   div(ng-app='candusen')
     teeest(name='cock')
   h1= title
-  p Welccome to #{title}
-  button(id='gears' ) gears
-  button(id='prism' ) prism
-  button(id='caffeine' ) caffeine
-  button(id='ellsworth' ) ellsworth
-  button(id='pencil' ) pencil
-  button(id='dashes' ) dashes
-  button(id='lollipop' ) lollipop
-  br
-  canvas(id='myCanvas' style='border:1px solid black; position:static; bottom:3%; top:10%')
+  a(id='erase') wanna erase this shit, #{title}
+  div(id='toolbox' style='text-align:center;')
+    div(id='holder')
+    br
+    canvas(id='myCanvas' style='border:1px solid black; position:static; bottom:3%; top:10%')

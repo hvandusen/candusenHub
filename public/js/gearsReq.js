@@ -1,7 +1,4 @@
-
-
-
-define(['gearsReq'],function(){
+define(function(){
 	return function(){
 		var path;
     var gears = [];

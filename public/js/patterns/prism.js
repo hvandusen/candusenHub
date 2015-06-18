@@ -3,7 +3,6 @@ define(function(){
 		var size = 900
 	  var variance = 10;
 	  var center = new paper.Point(screen.availWidth/2,screen.availHeight/2)
-	  console.dir(center)
 	  //points from the center of screen minus size plus variance
 	  function ran(variance){
 	  	return Math.random()*variance-(variance/2)

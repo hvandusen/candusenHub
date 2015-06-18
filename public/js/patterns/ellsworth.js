@@ -39,7 +39,6 @@ function drawShape(point){
 	path.add(new paper.Point(offset.x,offset.y))
 	}
 	path.fillColor = prettyRaCo()
-	console.dir(point)
 	path.scale(.6)
   	temp = num(5);
   	if(temp ==0)
@@ -61,12 +60,9 @@ function drawShape(point){
 	path.position = point
   path.smooth();
   return path;
-console.log('hi')
   }
-	console.dir(num)
 function makePoint(box){
 	loc = box.bounds;
-	console.dir([num(loc._width)+loc._x,num(loc._height)+loc._y])
 	path.add(new paper.Point(num(loc._width)+loc._x,num(loc._height)+loc._y));
 
 }

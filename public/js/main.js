@@ -5,14 +5,24 @@ require(['patterns/gears','paper',
         'patterns/pencil',
         'patterns/dashes',
         'patterns/lollipop',
+        'patterns/wires',
+        'patterns/squash',
+        'patterns/pixels',
+        'patterns/prsm',
+        'patterns/dubai',
         'lib/jquery-2.0.0.min'],
 
-function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,flower){
+function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squash,pixels,prsm,dubai){
   	// Create an empty project and a view for the canvas
   	//you need to use onload. onFrame accessible thru paper.view.onframe
   	//other mouse functions thru paper.tool.on('mousedown',function(ev){});
   	var canvas = document.getElementById('myCanvas');
+    $('canvas').attr({
+      width: window.outerWidth-100,
+      height: window.outerHeight-300
+    });
     var project = {};
+    var selected;
     var patterns = {
       gears:gears,
       prism:prism,
@@ -20,12 +30,30 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,flower){
       ellsworth:ellsworth,
       pencil:pencil,
       dashes:dashes,
-      lollipop:lollipop
-      //flower:flower
+      lollipop:lollipop,
+      wires:wires,
+      squash:squash,
+      squash:squash,
+      pixels:pixels,
+      prsm:prsm,
+      dubai:dubai
       }
   	  paper.setup(canvas)
-    $('button').click(function(){
-      //paper.tools.tool.handlers = {}
+      for(p in patterns)
+      {
+        $('#holder').append('<button class="pattern" id="'+p+'"><img src="images/'+p+'.png"></button>')
+      }
+
+      $('#erase').click(function(){
+        paper.project.clear();
+      });
+
+    $('.pattern').click(function(){
+      $(this).removeClass
+      if(selected && selected !== $(this))
+      selected.removeClass('selected')
+      selected = $(this)
+      selected.addClass('selected')
       project = paper.project
       var layer = new paper.Layer();
       layer.activate()
@@ -34,7 +62,14 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,flower){
         paper.tools[0]._handlers = undefined;
         paper.tool.minDistance = undefined;
       }
-      patterns[this.innerText]()
+      patterns[this.id]()
     });
+
+
+//applies this function to every obj
+
+
 });
+
+
 //var app = angular.module('candusen',[])

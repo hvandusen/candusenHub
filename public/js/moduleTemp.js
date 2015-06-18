@@ -15,5 +15,9 @@ define(function(){
 
 	});
 
+	paper.view.onFrame = function(ev){
+
+	};
+
 	}
 });

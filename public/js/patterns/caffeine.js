@@ -3,8 +3,8 @@ define(function(){
 
     var path;
 
-    width = 100//d.getHours()+1*15 +1
-    var move = false;
+    width = 40//d.getHours()+1*15 +1
+    var move = true;
     //width = 20//Math.random()*600+200;
     height =  10
     rot = Math.random()
@@ -14,7 +14,7 @@ define(function(){
     var currentColor = 'red';
 
     function makeShapes(point){
-    	p =  new paper.Shape.Rectangle([point.x,point.y],[100,10]);
+    	p =  new paper.Shape.Rectangle([point.x,point.y],[40,10]);
     	p.fillColor = currentColor;
     	return p;
     }
@@ -28,13 +28,10 @@ define(function(){
       for(var i = 0;i<items;i++)
       {
         temp = paper.project.activeLayer.children[i];
-    	temp.size.height = height;
-        temp.borderRadius = 1;
-
-        temp.rotate(event.delta.x/3)
-        if(move)
+        if(!move)
         {
-    			temp.position.x += event.delta.x;
+					temp.rotate(event.delta.x/3)
+					temp.fillColor.hue += Math.random();
     			//temp.position.y += event.delta.y;
     			}
         else

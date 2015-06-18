@@ -18,6 +18,15 @@ function prettyRaCo()
             color= color+ randomNumber+",0,255)";
             return color;
         }
+function combine(obj1,obj2){
+  console.dir([obj1,obj2])
+    return [obj1.x-obj2.x,obj1.y-obj2.y]
+}
+
+function addup(obj1,obj2){
+    return [obj1.x+obj2.x,obj1.y+obj2.y]
+
+}
 
  function prettyRaCo2(whiteness)
         {
