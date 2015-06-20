@@ -10,9 +10,10 @@ require(['patterns/gears','paper',
         'patterns/pixels',
         'patterns/prsm',
         'patterns/dubai',
+        'patterns/sidewalk',
         'lib/jquery-2.0.0.min'],
 
-function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squash,pixels,prsm,dubai){
+function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squash,pixels,prsm,dubai,sidewalk){
   	// Create an empty project and a view for the canvas
   	//you need to use onload. onFrame accessible thru paper.view.onframe
   	//other mouse functions thru paper.tool.on('mousedown',function(ev){});
@@ -36,7 +37,8 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       squash:squash,
       pixels:pixels,
       prsm:prsm,
-      dubai:dubai
+      dubai:dubai,
+      sidewalk:sidewalk
       }
   	  paper.setup(canvas)
       for(p in patterns)
