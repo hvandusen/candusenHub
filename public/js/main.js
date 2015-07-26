@@ -11,9 +11,11 @@ require(['patterns/gears','paper',
         'patterns/prsm',
         'patterns/dubai',
         'patterns/sidewalk',
+        'patterns/surprise',
+        'patterns/splash',
         'lib/jquery-2.0.0.min'],
 
-function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squash,pixels,prsm,dubai,sidewalk){
+function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squash,pixels,prsm,dubai,sidewalk,surprise,splash){
   	// Create an empty project and a view for the canvas
   	//you need to use onload. onFrame accessible thru paper.view.onframe
   	//other mouse functions thru paper.tool.on('mousedown',function(ev){});
@@ -24,6 +26,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
     });
     var project = {};
     var selected;
+    console.dir(arguments)
     var patterns = {
       gears:gears,
       prism:prism,
@@ -38,7 +41,9 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       pixels:pixels,
       prsm:prsm,
       dubai:dubai,
-      sidewalk:sidewalk
+      sidewalk:sidewalk,
+      surprise:surprise,
+      splash:splash
       }
   	  paper.setup(canvas)
       for(p in patterns)
@@ -51,7 +56,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       });
 
     $('.pattern').click(function(){
-      $(this).removeClass
+      //$(this).removeClass
       if(selected && selected !== $(this))
       selected.removeClass('selected')
       selected = $(this)

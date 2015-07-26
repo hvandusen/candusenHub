@@ -60,5 +60,7 @@ define(function(){
 	  	current = createShape(new paper.Point(event.point))
 	      //new paper.Path.Rectangle(event.point,100,100).fillColor = prettyRaCo();//'red'
 	  });
+	this.namez = 'sackline'
+}
 
-}});
+});

@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'candusen bub' });
 });
 
+router.get('/sack', function(req, res, next) {
+  res.render('index', { title: 'candusen bub' });
+});
+
+
 module.exports = router;

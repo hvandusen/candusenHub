@@ -2,8 +2,8 @@ define(function(){
     return function(){
       var rows = 30;
       var columns = 30;
-      var height = 5;
-      var width = 5;
+      var height = 8;
+      var width = 8;
       var offset = (rows*width)/2
       var margin ;
       var symbols = [];
