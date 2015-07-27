@@ -1,4 +1,4 @@
-var app = angular.module('candusen',[])
+/*var app = angular.module('candusen',[])
 
 app.directive('teeest',function(){
   return {
@@ -8,11 +8,10 @@ app.directive('teeest',function(){
     //  $scope.name = 'hi there'
     },
     link:function($scope,elem){
-      console.dir($scope)
     },
     scope :
     {
       name : '='
     }
   }
-})
+});*/

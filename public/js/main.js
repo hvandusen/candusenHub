@@ -26,7 +26,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
     });
     var project = {};
     var selected;
-    console.dir(arguments)
+    var something = false;
     var patterns = {
       gears:gears,
       prism:prism,
@@ -53,6 +53,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
 
       $('#erase').click(function(){
         paper.project.clear();
+        something = false;
       });
 
     $('.pattern').click(function(){
@@ -71,12 +72,39 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       }
       patterns[this.id]()
     });
+    $('#width').attr({value:Math.floor(screen.availWidth/2)});
+    $('#height').attr({value:Math.floor(screen.availHeight/2)});
+    var previewVisible = false;
+    $('#preview').attr({width:Math.floor(screen.availWidth/2),
+      height:Math.floor(screen.availHeight/2)
+    });
+    $('#preview').click(function(){
+      $(this).attr({hidden:true})
+    })
+    $('#image').click(function(){
+      url = canvas.toDataURL()
+      $('#urlHolder').attr({value:url})
+      $('#preview').attr({hidden:false,src:url})
+      something = true;
+    });
+    $('#title').click(function(){
+      if(something)
+      $('#toSubmit').text('press enter to submit');
+      else
+      $('#toSubmit').text('save a preview of something to submit!!');
+    });
 
-
-//applies this function to every obj
-
-
+    $('#hubLink,#listLink').css('color','rgb(0,'+Math.floor(Math.random()*255)+',255)');
+    widthForm = $('#title').x +100
+    heightForm = $('#title').y
+    $( "body" ).keypress(function(k) {
+    if(k.charCode==112){
+      if(url)
+      $('#preview').attr({hidden:!$('#preview').attr('hidden'),src:url})
+    }
+    });
 });
+
 
 
 //var app = angular.module('candusen',[])

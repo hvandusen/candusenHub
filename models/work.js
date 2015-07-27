@@ -5,8 +5,10 @@ var mongoose = require('mongoose')
 
 var workSchema = new Schema({
     dateCreated: {type: Date, default: Date.now},
-    title: {type:String, default:''},
+    name: {type:String, default:'something'},
     img_url: {type:String, default:''},
+    width:{type:Number,default:300},
+    height:{type:Number,default:200},
     //users:{type:relationship??}
     //patterns:{Array of strings}
     //paperobject:{}
