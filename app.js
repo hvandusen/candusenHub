@@ -14,10 +14,6 @@ var Work = require('./models/work');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 
-Work.find(function(error,thing){
-  console.log(thing[thing.length-1])
-});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

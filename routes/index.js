@@ -25,12 +25,23 @@ router.get('/list',function(req,res,next){
   //Work.find().sort({approvals: -1}),function(err,docs){
     //urls = docs
   //});
-
     Work.find(function(err,docs){
       //get all tha pictures dude!!
       urls = docs
       res.render('list', { title: 'candusen hub!!!',urls: urls,request: req });
     }).sort({approvals:-1});
 
+});
+
+router.post('/approval/:workid',function(req,res,done){
+  Work.update({_id:req.params.workid},{'$inc':{approvals:1}},function(err,doc){
+    console.log(doc)
+  });
+  /*Work.find({_id:req.params.workid},function(err,doc){
+    amt = doc[0].approvals
+    doc[0].approvals = amt+1
+    console.log(doc)
+    Work.save()
+  });*/
 });
 module.exports = router;
