@@ -1,60 +1,77 @@
 define(function(){
 	return function(){
 
+		var flash = false;
 		var size = 900
 		var variance = 10;
-		var center = new paper.Point(screen.availWidth/2,screen.availHeight/2)
+		var center = paper.project.view.bounds.center//new Point(screen.availWidth/2.3,screen.availHeight/2.3)
+		var path,path2;
+		//var group = new Group();
+		var proPath,fill1,fill2;
+		var corner;
+		var numChoice = 7;
 		//points from the center of screen minus size plus variance
 		function ran(variance){
 			return Math.random()*variance-(variance/2)
 		}
-
-		function createShape(point){
-			var path = new paper.Path(center);
-			var path2 = new paper.Path();
-			path.add([center.x+200,center.y])
-			var group = new paper.Group();
-			for(var i=0;i<4;i++){
-				numb = Math.random()*50
-				path.rotate(numb)
-				path2.add(path.segments[1])
-				path.rotate(90-numb)
-			}
-			path2.fillColor = prettyRaCo()
-			group.children.push(path2)
-		// ok now random shape inscribed from cirlce
-
-			protrusion = Math.floor(Math.random()*4)
-			pointChoice = path2.segments[protrusion]
-			proPath = new paper.Path(pointChoice)
-			proPath.add(path2.bounds.center)
-			proPath.rotate(180+ran(50),pointChoice.point)
-			//proPath.strokeColor = 'red'
-			vector = new paper.Point(combine(proPath.segments[0].point,proPath.segments[1].point))
-			console.dir(vector)
-			var fill1 = new paper.Path(proPath.segments)
-			num2 = ((protrusion+1)%4+1)-1
-			num3 = ((protrusion+3)%4)
-			p = new paper.Point(addup(path2.segments[num2].point,vector))
-			fill1.add(new paper.Point(combine(path2.segments[num2].point,vector)))
-			fill1.add(path2.segments[num2])
-			var fill2 = new paper.Path(proPath.segments)
-			fill2.add(new paper.Point(combine(path2.segments[num3].point,vector)));
-			fill2.add(path2.segments[num3])
-			fill2.fillColor=prettyRaCo();
-			group.children.push(fill1)
-			group.children.push(fill2)
-			fill1.closed=true;
-			fill2.closed=true;
-			fill1.fillColor=prettyRaCo()
-			group.position = [point.x,point.y]
-			group.scale(Math.random()+.5)
-				return group
+		function color(){
+			list = ['yellow','green','red','blue','orange','purple']
+			return list[Math.floor(Math.random()*6)]
 		}
 
-		paper.tool.on('mousedown',function(){
-			console.dir(createShape(new paper.Point([event.offsetX,event.offsetY])))
-		})
+		function baseShape(point){//make a rectangle,path rotates and makes path2
+		 	path = new paper.Path(center);
+		 	path2 = new paper.Path()
+			//path2 = real path
+			path.add(center)
+			path.add([center.x+200,center.y])
+			for(var i=0;i<numChoice;i++){
+				num = Math.random()*90
+				path.rotate(num)
+				path2.add(path.segments[1])
+				path.rotate(90-num)
+			}
+			path2.fillColor = prettyRaCo();
+			path2.position = point;
+			return path2;
+		}
+
+		function offShoot(path){
+			corner = base.segments[Math.floor(Math.random()*numChoice)]
+			offshoot = new paper.Path(corner)
+			offshoot.add(path.bounds.center)
+			offshoot.rotate(180,corner.point)
+			return offshoot;
+
+		}
+		function draw(){
+			paper.project.activeLayer.clear()
+			group = new paper.Group()
+			base = baseShape(new paper.Point(center))
+			offshoot = offShoot(base)
+			vector = new paper.Point([offshoot.segments[1].point.x-offshoot.segments[0].point.x,offshoot.segments[1].point.y-offshoot.segments[0].point.y]);
+			_.each(base.segments,function(corner,i){
+				console.dir([i,corner])
+				addon = new paper.Point([corner.point.x+vector[0],corner.point.y+vector[1]])
+						p = new paper.Path(corner.point)
+						p.add(addon)
+						//whatever the next point is..
+						otherpt = base.segments[Math.abs((i-1)%base.segments.length)].point
+						p.add(otherpt+vector)
+						p.add(otherpt)
+						p.fillColor = prettyRaCo()
+						console.log(p.fillColor)
+						group.children.push(p)
+				//	}
+
+			})
+				group.scale(2.4)
+		}
+
+		paper.tool.on('mousedown',function(event){
+			draw();
+
+		});
 
 
 }});

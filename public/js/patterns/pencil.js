@@ -3,9 +3,9 @@ define(function(){
 
     var path = new paper.Path();
     var count = 1;
+		var clicked = false;
     paper.tool.distanceThreshold = 1
     path.strokeWidth = 5;
-    path.strokeStyle = 'dotted';
     randomNumber = Math.floor(Math.random()*255)
     path.strokeColor = {
 		gradient:{
@@ -18,19 +18,26 @@ define(function(){
 		};
 
     paper.tool.on('mousemove',function(event){
-      if(num(2) === 0){
-					//path.add([event.point.x+num(60)-30,event.point.y+num(60)-30]);
+			if(clicked)
+      	if(num(2) === 0){
 				  path.add(event.point.x+Math.sin(count/10)*20,event.point.y+Math.cos(count/10)*20)
-          //path.smooth();
-		}
+					path.smooth({tolerance:.1});
+					if(path.segments.length>50)
+					path.segments.splice(num(path.segments.length-1),1)
+				}
     });
 
     paper.tool.on('mousedown',function(event){
-      //path = new paper.Path()
-			for(var i = 0;i<10;i++){
-				path.segments.splice(num(path.segments.length),3)
+			clicked = !clicked;
+			if(!clicked){
+				path = new paper.Path();
+				path.strokeWidth = 5;
 			}
-			path.simplify()
+			for(var i = 0;i<5;i++){
+				path.segments.splice(num(path.segments.length),1)
+			}
+
+			path.simplify({tolerance:.1})
       path.strokeColor = {
   		gradient:{
   			stops:[prettyRaCo(),prettyRaCo(),prettyRaCo()],

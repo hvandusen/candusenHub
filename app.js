@@ -8,9 +8,15 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/candusenhub');
+//mongodb://henry:henryvd@ds059702.mongolab.com:59702/candusenhub
+mongoose.connect('mongodb://henry:henryvd1@ds059702.mongolab.com:59702/candusenhub');
+//mongoose.connect('mongodb://localhost/candusenhub');
 var db = mongoose.connection;
 var Work = require('./models/work');
+var options = {
+url: '',
+timeout:1000
+};
 
 db.on('error', console.error.bind(console, 'connection error:'));
 

@@ -13,6 +13,7 @@ require(['patterns/gears','paper',
         'patterns/sidewalk',
         'patterns/surprise',
         'patterns/splash',
+        'lib/underscore-1.5.1',
         'lib/jquery-2.0.0.min'],
 
 function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squash,pixels,prsm,dubai,sidewalk,surprise,splash){
