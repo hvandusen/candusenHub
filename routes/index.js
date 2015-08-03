@@ -36,6 +36,7 @@ router.get('/list',function(req,res,next){
 router.post('/approval/:workid',function(req,res,done){
   Work.update({_id:req.params.workid},{'$inc':{approvals:1}},function(err,doc){
     console.log(doc)
+    done()
   });
   /*Work.find({_id:req.params.workid},function(err,doc){
     amt = doc[0].approvals
