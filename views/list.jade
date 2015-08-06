@@ -1,18 +1,17 @@
 block content
   script(src='js/lib/jquery-2.0.0.min.js')
   script(src='js/list.js')
-  h1= title
-  h3 submitted works
-  a(href='/') back to canvas
-    div(style='text-align:center')
-      for url in urls
-        div(class='tile')
+  a(href='/' style='position:fixed;') back to canvas
+  h1(style='position:fixed;right:3%; top:3%;') submitted works
+  div(style='text-align:center')
+    for url in urls
+      div(class='tile')
+        br
+        div(id='side', style='width:20%; text-align:center; left:0%; position:absolute;')
+          a(style='font-size:1.6em')= url.name
           br
-          div(id='side', style='width:20%; text-align:center; left:0%; position:absolute;')
-            a(style='font-size:1.6em')= url.name
-            br
-            a= url.dateCreated
-            br
-            a approvals:
-            button(class='id' id='#{url.id}')= url.approvals
-          img(class='listImg', style='border:solid black 1px;', width=url.width, height=url.height, src= url.img_url)
+          a= url.dateCreated
+          br
+          a approvals:
+          button(class='id' id='#{url.id}')= url.approvals
+        img(class='listImg', style='border:solid black 1px;', width=url.width, height=url.height, src= url.img_url)
