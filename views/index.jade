@@ -9,16 +9,12 @@ block content
     img(id='preview' hidden)
     br
     canvas(id='myCanvas' style='border:1px solid black; position:static; bottom:3%; top:10%')
-    button(id='image' style='position:static, bottom:3%, right:10%, width:20%') save and view preview
     br
-    button(id='erase') erase
-    form(name='nickname' action="/add" method="post")
+    
+    form(name='nickname' action="/list" method="post")
       input(type='text', name='url' id='urlHolder', hidden)
       input(type='number', name='width' id='width', hidden)
       input(type='number', name='height' id='height', hidden)
-      br
-      a title:
-      br
       input(type='text', name='name' id='title', value='enter a title!')
       br
       label(id='toSubmit')

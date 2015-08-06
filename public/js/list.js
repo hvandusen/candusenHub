@@ -1,6 +1,9 @@
 
 $('document').ready(function(){
   $('.id').click(function(){
+    v = parseInt($(this)[0].innerText);
+    v = v+1;
+    $(this)[0].innerText = v.toString();
     $.ajax({
       url : "/approval/"+$(this)[0].id,
       type: "POST",
@@ -14,6 +17,7 @@ $('document').ready(function(){
       }
     });
   });
+
 });
 
 /*console.log($(this)[0].id)

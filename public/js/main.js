@@ -51,7 +51,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       {
         $('#holder').append('<button class="pattern" id="'+p+'"><img src="images/'+p+'.png"></button>')
       }
-
+      $('#holder').append('<button class="erase" id="erase"></button>')
       $('#erase').click(function(){
         paper.project.clear();
         something = false;
@@ -59,6 +59,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
 
     $('.pattern').click(function(){
       //$(this).removeClass
+      console.log(canvas.toDataURL('image/png').length)
       if(selected && selected !== $(this))
       selected.removeClass('selected')
       selected = $(this)
@@ -73,6 +74,8 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       }
       patterns[this.id]()
     });
+
+
     $('#width').attr({value:Math.floor(screen.availWidth/2)});
     $('#height').attr({value:Math.floor(screen.availHeight/2)});
     var previewVisible = false;
@@ -82,17 +85,18 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
     $('#preview').click(function(){
       $(this).attr({hidden:true})
     })
-    $('#image').click(function(){
-      url = canvas.toDataURL()
+    $('#title').change(function(){
+      url = canvas.toDataURL('image/png')
       $('#urlHolder').attr({value:url})
-      $('#preview').attr({hidden:false,src:url})
+      //$('#preview').attr({hidden:false,src:url})
       something = true;
     });
+
     $('#title').click(function(){
       if(something)
       $('#toSubmit').text('press enter to submit');
       else
-      $('#toSubmit').text('save a preview of something to submit!!');
+      $('#toSubmit').text('press enter to submit');
     });
 
     $('#hubLink,#listLink').css('color','rgb(0,'+Math.floor(Math.random()*255)+',255)');

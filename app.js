@@ -9,14 +9,10 @@ var users = require('./routes/users');
 var app = express();
 var mongoose = require('mongoose');
 //mongodb://henry:henryvd@ds059702.mongolab.com:59702/candusenhub
-mongoose.connect('mongodb://henry:henryvd1@ds059702.mongolab.com:59702/candusenhub');
-//mongoose.connect('mongodb://localhost/candusenhub');
+//mongoose.connect('mongodb://henry:henryvd1@ds059702.mongolab.com:59702/candusenhub');
+mongoose.connect('mongodb://localhost/candusenhub');
 var db = mongoose.connection;
 var Work = require('./models/work');
-var options = {
-url: '',
-timeout:1000
-};
 
 db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -31,9 +27,8 @@ app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({limit: '5mb',extended:true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 app.listen(3000);
 
 // catch 404 and forward to error handler

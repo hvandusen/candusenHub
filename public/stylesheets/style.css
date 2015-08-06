@@ -40,6 +40,20 @@ body {
   left:2%;
 }
 
+.erase {
+  height:60px;
+  width:50px;
+  border: 0;
+  background-position: center;
+  background-size:contain;
+  background-image: url('../images/erase.png');
+  background-repeat: no-repeat;
+}
+
+#holder {
+  margin:0px;
+}
+
 .tile {
   border:solid black 1px;
 }
@@ -48,10 +62,16 @@ canvas {
   z-index: -1;
   border: solid 2px white;
 }
+#title {
+  font-size: 4em;
+  overflow-x:inherit;
+  border: solid white 1px;
+  width:100%
+}
 
 .pattern img{
   height:60px;
-  width:60px;
+  width:50px;
   margin: 0px
 }
 
@@ -61,6 +81,6 @@ canvas {
 
 .pattern.selected{
 
-  height:120px;
-  width:120px;
+  height:80px;
+  width:80px;
 }
