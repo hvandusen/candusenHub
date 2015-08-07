@@ -51,7 +51,7 @@ function(gears,paper,prism, caffeine,ellsworth,pencil,dashes,lollipop,wires,squa
       {
         $('#holder').append('<button class="pattern" id="'+p+'"><img src="images/'+p+'.png"></button>')
       }
-      $('#holder').append('<button class="erase" id="erase"></button>')
+      $('#holder').append(' <button class="erase" id="erase"></button>')
       $('#erase').click(function(){
         paper.project.clear();
         something = false;

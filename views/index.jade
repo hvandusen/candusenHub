@@ -2,7 +2,7 @@ extends layout
 
 block content
   a(href='/', id='hubLink', style='font-size:2em')= title
-  a(id='listLink', href='/list') list of works
+  a(id='listLink', href='/hub/list') list of works
   br
   div(style='text-align:center;')
     div(id='holder' style='text-align:center;')
@@ -10,8 +10,8 @@ block content
     br
     canvas(id='myCanvas' style='border:1px solid black; position:static; bottom:3%; top:10%')
     br
-    
-    form(name='nickname' action="/list" method="post")
+
+    form(name='nickname' action="/hub/list" method="post")
       input(type='text', name='url' id='urlHolder', hidden)
       input(type='number', name='width' id='width', hidden)
       input(type='number', name='height' id='height', hidden)

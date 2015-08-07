@@ -24,7 +24,7 @@ router.post('/list', function(req, res, next) {
   pic.save(function(err,pic){
     Work.find(function(err,docs){
       urls = docs;
-      res.redirect('/list');
+      res.redirect('/hub/list');
     }).sort({approvals:-1});
 
   });

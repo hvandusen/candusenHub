@@ -5,7 +5,7 @@ $('document').ready(function(){
     v = v+1;
     $(this)[0].innerText = v.toString();
     $.ajax({
-      url : "/approval/"+$(this)[0].id,
+      url : "/hub/approval/"+$(this)[0].id,
       type: "POST",
       data : {},
       success: function(data, textStatus, jqXHR)
