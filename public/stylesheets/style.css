@@ -66,8 +66,13 @@ canvas {
   font-size: 4em;
   overflow-x:inherit;
   border: solid white 1px;
-  width:100%
+  width:10%
 }
+
+#button {
+  width:500px;
+}
+
 
 .pattern img{
   height:60px;
@@ -75,8 +80,9 @@ canvas {
   margin: 0px
 }
 
-#holder {
-
+#toSubmit {
+position:static;
+left:0;
 }
 
 .pattern.selected{
